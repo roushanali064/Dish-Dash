@@ -1,0 +1,10 @@
+.banner{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.banner-info{
+    position: absolute;
+    left: 10%;
+    bottom: 20%;
+}
