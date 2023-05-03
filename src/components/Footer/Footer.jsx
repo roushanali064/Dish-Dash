@@ -23,6 +23,9 @@ const Footer = () => {
                     <a className="link link-hover">Cookie policy</a>
                 </div>
             </footer>
+            <div className='p-10 bg-neutral text-neutral-content text-center'>
+                <p>Copyright © 2023 - All right reserved by Dish-Dash Ltd</p>
+            </div>
         </div>
     );
 };
