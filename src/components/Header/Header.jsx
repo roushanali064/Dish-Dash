@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
 
 const Header = () => {
@@ -25,8 +25,8 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="navbar-center font-bold text-xl">
-                    <Link to='/' className='mr-3'>Home</Link>
-                    <Link to='/blog'>Blog</Link>
+                    <NavLink style={({isActive})=>{return {color: isActive?'orange' : ''}}} to='/' className='mr-3'>Home</NavLink>
+                    <NavLink style={({isActive})=>{return {color: isActive?'orange' : ''}}} to='/blog'>Blog</NavLink>
                 </div>
                 <div className="navbar-end">
                     {
