@@ -7,7 +7,7 @@ import github from '../../assets/github.png'
 
 const Login = () => {
 
-    const { signInWithEmail, googleAuth } = useContext(authContext)
+    const { signInWithEmail, googleAuth, githubAuth } = useContext(authContext)
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -35,6 +35,16 @@ const Login = () => {
             })
             .catch(error => {
                 console.error(error)
+            })
+    }
+
+    const handleGitHubLogin = () => {
+        githubAuth()
+            .then(res => {
+
+            })
+            .catch(error => {
+                console.error(error.message)
             })
     }
 
@@ -71,7 +81,7 @@ const Login = () => {
                         </form>
                         <div className='md:flex md:justify-between'>
                             <button onClick={handleGoogleLogin} className="btn btn-outline btn-primary flex gap-1"><img className='w-7' src={google} alt="" />  SignIn With Google</button>
-                            <button className="btn btn-outline btn-primary flex gap-1"><img className='w-7' src={github} alt="" />  SignIn with GitHub</button>
+                            <button onClick={handleGitHubLogin} className="btn btn-outline btn-primary flex gap-1"><img className='w-7' src={github} alt="" />  SignIn with GitHub</button>
                         </div>
                         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                             Don’t have an account yet? <Link to='/register' href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Register</Link>
