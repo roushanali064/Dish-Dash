@@ -14,6 +14,10 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, photoUrl, email, password)
+        if (password.length < 6) {
+            return
+        }
+
         signUpWithEmail(email, password)
             .then(res => {
                 const loggedUser = res.user
