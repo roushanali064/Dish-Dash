@@ -4,24 +4,36 @@ import { authContext } from '../Provider/AuthProvider';
 
 const Register = () => {
 
-    const { signUpWithEmail } = useContext(authContext)
+    const { signUpWithEmail, updateUserProfile } = useContext(authContext)
 
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
         const photoUrl = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(photoUrl, email, password)
+        console.log(name, photoUrl, email, password)
         signUpWithEmail(email, password)
-        .then(res=>{
-            const loggedUser = res.user
-            console.log(loggedUser);
-        })
-        .catch(error=>{
-            console.error(error.message)
-        })
+            .then(res => {
+                const loggedUser = res.user
+                console.log(loggedUser);
+                handleUpdateUser(loggedUser, name, photoUrl)
+
+            })
+            .catch(error => {
+                console.error(error.message)
+            })
         form.reset()
+    }
+    const handleUpdateUser = (user, name, photoUrl) => {
+        updateUserProfile(user, name, photoUrl)
+            .then(res => {
+                console.log('update successfully')
+            })
+            .catch(error => {
+                console.error(error.message)
+            })
     }
 
     return (
@@ -33,6 +45,10 @@ const Register = () => {
                             Register your account
                         </h1>
                         <form onSubmit={handleRegister} className="space-y-4 md:space-y-6" action="#">
+                            <div>
+                                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Name" required="" />
+                            </div>
                             <div>
                                 <label htmlFor="photo" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Photo URL</label>
                                 <input type="text" name="photo" id="photo" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Photo URL" required="" />
