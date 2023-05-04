@@ -1,6 +1,8 @@
 import React from 'react';
+import jsPDF from 'jspdf';
 
 const Blog = () => {
+
     return (
         <div className='container mx-auto px-4'>
             <div className='mb-4'>
@@ -27,6 +29,7 @@ const Blog = () => {
                 <h2 className='font-bold text-3xl'>4. What is a custom hook, and why will you create a custom hook ?</h2>
                 <p className='text-xl ml-6'><span className='text-2xl'>Answer :</span> a custom hook is created, it can be reused easily, which makes the code cleaner and reduces the time to write the code.</p>
             </div>
+            
         </div>
     );
 };

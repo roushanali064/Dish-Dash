@@ -20,7 +20,7 @@ const router = createBrowserRouter([
             {
                 path: '/chef/:id',
                 element: <PrivateRoutes><ChefRecipes></ChefRecipes></PrivateRoutes>,
-                loader: ({params})=>fetch(`http://localhost:5000/chef/${params.id}`)
+                loader: ({params})=>fetch(`https://dish-dash-server-roushanali064.vercel.app/chef/${params.id}`)
             },
             {
                 path: '/login',

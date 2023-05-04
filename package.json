@@ -13,6 +13,7 @@
     "awesome-react-components": "^0.0.4",
     "daisyui": "^2.51.6",
     "firebase": "^9.21.0",
+    "jspdf": "^2.5.1",
     "lazy-loader-js": "^1.1.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
