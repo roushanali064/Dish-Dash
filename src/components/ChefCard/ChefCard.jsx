@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
     const { chefName, chefPicture, likes, numberOfRecipes, yearsOfExperience, id } = chef;
-    console.log(chef)
     return (
         <div className='container mx-auto px-4'>
             <div className=''>
                 <div className="card shadow-2xl w-96 glass">
                     <figure><img 
-                    class="lazy-img" 
+                    className="lazy-img" 
                     data-lazy-src="" 
                     data-lazy-width="" 
                     src={chefPicture} 

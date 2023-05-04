@@ -6,7 +6,6 @@ import Recipes from '../Recipes/Recipes';
 const ChefRecipes = () => {
     const data = useLoaderData()
     const { id, chefName, yearsOfExperience, chefPicture, likes, numberOfRecipes, recipe, } = data;
-    console.log(data)
     return (
         <div>
             <div className='mt-24 container mx-auto px-4'>

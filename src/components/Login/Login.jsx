@@ -19,17 +19,16 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log('this is work', email, password)
 
         signInWithEmail(email, password)
             .then(res => {
                 const loggedUser = res.user;
-                console.log(loggedUser)
+                
                 toast('Login Successfully ')
                 navigate(from)
             })
             .catch(error => {
-                console.error(error.message)
+                
                 toast(error.message)
             })
 

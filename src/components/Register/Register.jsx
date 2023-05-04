@@ -15,7 +15,7 @@ const Register = () => {
         const photoUrl = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photoUrl, email, password)
+        
         if (password.length < 6) {
             toast('Password must be 6 character or then')
             return
