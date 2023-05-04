@@ -37,7 +37,7 @@ const Register = () => {
     }
 
     return (
-        <div>
+        <div className='mt-24'>
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -67,10 +67,9 @@ const Register = () => {
                                         <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="" />
                                     </div>
                                     <div className="ml-3 text-sm">
-                                        <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
+                                        <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Accepted Terms And Condition</label>
                                     </div>
                                 </div>
-                                <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                             </div>
                             <button type="submit" className="btn btn-primary text-center w-full">Sign UP</button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">

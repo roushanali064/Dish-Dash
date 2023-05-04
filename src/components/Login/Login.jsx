@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
+import { FaGoogle } from 'react-icons/fa';
+import google from '../../assets/google.png'
+import github from '../../assets/github.png'
 
 const Login = () => {
 
-    const { signInWithEmail } = useContext(authContext)
+    const { signInWithEmail, googleAuth } = useContext(authContext)
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -14,21 +17,31 @@ const Login = () => {
         console.log('this is work', email, password)
 
         signInWithEmail(email, password)
-        .then(res=>{
-            const loggedUser = res.user;
-            console.log(loggedUser)
-        })
-        .catch(error=>{
-            console.error(error.message)
-        })
+            .then(res => {
+                const loggedUser = res.user;
+                console.log(loggedUser)
+            })
+            .catch(error => {
+                console.error(error.message)
+            })
 
         form.reset()
     }
 
+    const handleGoogleLogin = () => {
+        googleAuth()
+            .then(res => {
+                const loggedUser = res.user;
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
     return (
         <div>
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div className="flex flex-col items-center justify-center px-8 py-8 mx-auto md:h-screen lg:py-0">
+                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 ">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Login in to your account
@@ -54,10 +67,15 @@ const Login = () => {
                                 <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                             </div>
                             <button type="submit" className="btn btn-primary text-center w-full">Sign in</button>
-                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Don’t have an account yet? <Link to='/register' href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Register</Link>
-                            </p>
+                            <hr />
                         </form>
+                        <div className='md:flex md:justify-between'>
+                            <button onClick={handleGoogleLogin} className="btn btn-outline btn-primary flex gap-1"><img className='w-7' src={google} alt="" />  SignIn With Google</button>
+                            <button className="btn btn-outline btn-primary flex gap-1"><img className='w-7' src={github} alt="" />  SignIn with GitHub</button>
+                        </div>
+                        <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                            Don’t have an account yet? <Link to='/register' href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Register</Link>
+                        </p>
                     </div>
                 </div>
             </div>
