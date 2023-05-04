@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
@@ -15,18 +17,20 @@ const Register = () => {
         const password = form.password.value;
         console.log(name, photoUrl, email, password)
         if (password.length < 6) {
+            toast('Password must be 6 character or then')
             return
         }
 
         signUpWithEmail(email, password)
             .then(res => {
                 const loggedUser = res.user
-                console.log(loggedUser);
                 handleUpdateUser(loggedUser, name, photoUrl)
+                toast('user crate successfully')
 
             })
             .catch(error => {
                 console.error(error.message)
+                toast(error.message)
             })
         form.reset()
     }
@@ -83,6 +87,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

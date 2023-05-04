@@ -9,7 +9,13 @@ const ChefCard = ({ chef }) => {
         <div className='container mx-auto px-4'>
             <div className=''>
                 <div className="card shadow-2xl w-96 glass">
-                    <figure><img src={chefPicture} alt="car!" /></figure>
+                    <figure><img 
+                    class="lazy-img" 
+                    data-lazy-src="" 
+                    data-lazy-width="" 
+                    src={chefPicture} 
+                    alt="car!" 
+                    /></figure>
                     <div className="card-body">
                         <h2 className="card-title">Name: {chefName}</h2>
                         <p>Experience: {yearsOfExperience}</p>

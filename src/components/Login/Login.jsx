@@ -1,13 +1,18 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
 import google from '../../assets/google.png'
 import github from '../../assets/github.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
     const { signInWithEmail, googleAuth, githubAuth } = useContext(authContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -20,9 +25,12 @@ const Login = () => {
             .then(res => {
                 const loggedUser = res.user;
                 console.log(loggedUser)
+                toast('Login Successfully ')
+                navigate(from)
             })
             .catch(error => {
                 console.error(error.message)
+                toast(error.message)
             })
 
         form.reset()
@@ -89,6 +97,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     );
 };
