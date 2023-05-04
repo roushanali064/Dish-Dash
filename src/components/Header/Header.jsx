@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../Provider/AuthProvider';
 
 const Header = () => {
+
+    const { user, logOut } = useContext(authContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(res => {
+
+            })
+            .catch(error => {
+                console.error(error.message)
+            })
+    }
+
     return (
         <div className='bg-base-300'>
-            <div className="container mx-auto px-4 navbar bg-base-300">
+            <div className="container mx-auto px-4 navbar bg-base-300 py-4">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <h1 className='font-extrabold text-3xl'>Dish<span className='text-orange-400'>Dash</span></h1>
@@ -15,13 +29,20 @@ const Header = () => {
                     <Link>Blog</Link>
                 </div>
                 <div className="navbar-end">
-                <Link to='/login' className='btn'>Login</Link>
-                    <button className="btn btn-ghost btn-circle">
-                        <div className="indicator">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-                            <span className="badge badge-xs badge-primary indicator-item"></span>
+                    {
+                        user ? <button onClick={handleLogOut} className='btn'>LogOut</button> : <Link to='/login' className='btn'>LogIn</Link>
+                    }
+
+                    {
+                        user && <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                            <div className="avatar ml-10">
+                                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ">
+                                    <img src={user?.photoURL} />
+
+                                </div>
+                            </div>
                         </div>
-                    </button>
+                    }
                 </div>
             </div>
         </div>
