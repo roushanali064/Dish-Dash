@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingleChef = () => {
     return (
@@ -9,7 +10,9 @@ const SingleChef = () => {
                     <h2 className="card-title font-bold text-4xl">Hello! My name is Jane Smith. Your new sous chef!</h2>
                     <p>Stepping out from the shadows of their kitchens, chefs these days are admired and celebrated not only for their food but also their personalities, transforming them into culinary superstars loved by many. Unafraid to mingle with their audience and discuss everything from cooking to their personal lives</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">View More</button>
+                        <Link to='/login'>
+                            <button className="btn btn-primary bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">View More</button>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -25,8 +25,8 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="navbar-center font-bold text-xl">
-                    <NavLink style={({isActive})=>{return {color: isActive?'orange' : ''}}} to='/' className='mr-3'>Home</NavLink>
-                    <NavLink style={({isActive})=>{return {color: isActive?'orange' : ''}}} to='/blog'>Blog</NavLink>
+                    <NavLink style={({ isActive }) => { return { color: isActive ? 'orange' : '' } }} to='/' className='mr-3'>Home</NavLink>
+                    <NavLink style={({ isActive }) => { return { color: isActive ? 'orange' : '' } }} to='/blog'>Blog</NavLink>
                 </div>
                 <div className="navbar-end">
                     {
@@ -34,7 +34,8 @@ const Header = () => {
                     }
 
                     {
-                        user && <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                        user && 
+                        <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
                             <div className="avatar ml-10">
                                 <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ">
                                     <img src={user?.photoURL} />
